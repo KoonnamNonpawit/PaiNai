@@ -375,6 +375,17 @@ input, select, textarea { font: inherit; }
 .qrow.locked .thumb { background: var(--soft); color: var(--ink-3); }
 .qrow b { display: block; font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.3; }
 .qrow small { color: var(--ink-3); font-size: 12.5px; }
+.maker { margin: 10px var(--gut-r) 0 var(--gut); width: calc(100% - var(--gut) - var(--gut-r)); border: 1.5px dashed #c9cdc0; background: var(--surface); color: var(--ink); border-radius: 20px; padding: 14px; display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; text-align: left; }
+.maker > .ic { width: 40px; height: 40px; border-radius: 12px; background: var(--ink); color: var(--gold); padding: 9px; }
+.maker b { display: block; font-family: var(--f-display); font-size: 16px; color: var(--ink); }
+.maker small { color: var(--ink-3); font-size: 12.5px; }
+.stop { display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; align-items: center; background: var(--surface); color: var(--ink); border-radius: 16px; padding: 10px 12px; }
+.stop .n { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; font-size: 14px; }
+.stop b { display: block; font-size: 14.5px; color: var(--ink); line-height: 1.3; }
+.stop small { color: var(--ink-3); font-size: 12.5px; }
+.stop .x { border: 0; background: var(--soft); color: var(--ink-2); width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; padding: 7px; }
+.stop.add .n { background: var(--soft); color: var(--ink-2); }
+.stop.add .x { background: var(--ink); color: #fff; }
 .cat-hero { background: var(--c); color: #fff; padding-bottom: 22px; position: relative; overflow: hidden; }
 .cat-hero .inner { padding: 0 var(--gut-r) 0 var(--gut); }
 .cat-hero .th { font-family: var(--f-thai); font-size: 40px; color: #fff; line-height: 1.1; }
@@ -837,6 +848,7 @@ input, select, textarea { font: inherit; }
             <div class="trail-top"><span class="pill p-onc">Fan trail · unofficial</span><div class="th" style="margin-top:8px">ตามรอยซีรีส์</div><b>Duang With You</b><small>Wat Pho · boat noodles · film shop · Sky Park</small></div>
             <div class="trail-bot"><span><span class="price" id="trail-price">Free</span> <span class="small">4 spots</span></span><span class="pill p-dim">Old Town → Siam</span></div>
           </button>
+          <button class="maker" data-go="create"><span class="ic" data-ic="route"></span><span><b>Create your own route</b><small>Plan a quest walk for others · earn coins when they play it</small></span><span class="pill p-gold">Phase 2</span></button>
           <div class="sec"><h3 class="h2">Near you</h3><span class="small">Within 2 km</span></div>
           <div class="list" id="near"></div>
           <div class="sec"><h3 class="h2">Coming soon</h3></div>
@@ -904,6 +916,36 @@ input, select, textarea { font: inherit; }
       <div class="body" id="chat-body"><div class="chat" id="chat"></div></div>
       <div class="quick" id="quick"><button>On my way!</button><button>Meet at the gate?</button><button>อร่อยมาก 😋</button><button>Need help ordering</button></div>
       <form class="composer" id="composer"><input id="chat-input" placeholder="Message" autocomplete="off"><button type="submit" aria-label="Send"><span class="ic" data-ic="send"></span></button></form>
+    </section>
+
+    <!-- ============ CREATE A ROUTE (Phase 2 preview) ============ -->
+    <section class="scr" data-s="create" hidden>
+      <div class="appbar"><button class="ibtn" data-act="back" aria-label="Back"><span class="ic" data-ic="back"></span></button><h1>Create a route</h1><span class="pill p-gold">Phase 2 preview</span></div>
+      <div class="body pad gap-b" style="display:flex;flex-direction:column;gap:16px">
+        <p class="sub" style="margin:0">Turn your favorite walk into a quest route. Pick verified places, write the story, and other travelers can play it.</p>
+        <div class="field"><label for="cr-name">Route name</label><input class="input" id="cr-name" value="Yaowarat snack hunt" autocomplete="off"></div>
+        <div class="field"><label>Category</label><div class="seg" id="cr-cat"><button type="button" aria-pressed="true">Food Hunt</button><button type="button" aria-pressed="false">Series Trail</button><button type="button" aria-pressed="false">Muay Thai &amp; Culture</button></div></div>
+        <div class="field"><label for="cr-story">Scenario</label><textarea class="textarea" id="cr-story">You promised your grandma you would bring back the best Chinatown snacks. Taste three stalls, order each one in Thai, and decide which one wins.</textarea><span class="hint">The story players read before each stop</span></div>
+        <div class="field">
+          <label>Stops <span class="small" id="cr-count"></span></label>
+          <div class="list" id="cr-stops" style="padding:0"></div>
+        </div>
+        <div class="field">
+          <label>Add a stop</label>
+          <span class="hint">Only verified public places. You can't drop your own pins.</span>
+          <div class="list" id="cr-places" style="padding:0;margin-top:4px"></div>
+        </div>
+        <div class="box">
+          <b style="font-family:var(--f-display)">Route rules</b>
+          <ul class="feat-list">
+            <li><span class="ic" data-ic="pin"></span>Public places from the PaiPlao map only, never homes or private spots</li>
+            <li><span class="ic" data-ic="camera"></span>Your own photos only, no screenshots from series or films</li>
+            <li><span class="ic" data-ic="shield"></span>Our team reviews every route before it goes live</li>
+          </ul>
+        </div>
+        <div class="perk"><span class="ic" data-ic="coin"></span><div><b>Earn 20 coins each time someone finishes your route</b><small>Spend coins on rewards in your Passport · top routes get featured</small></div></div>
+      </div>
+      <div class="cta"><button class="btn" data-act="cr-submit">Send for review</button></div>
     </section>
 
     <!-- ============ PASSPORT ============ -->
@@ -1105,7 +1147,7 @@ input, select, textarea { font: inherit; }
     store: '<path d="M4 9 5.5 4h13L20 9M4 9h16v2a3 3 0 0 1-5.3 2 3 3 0 0 1-5.4 0A3 3 0 0 1 4 11V9ZM5 13v7h14v-7"/><path d="M10 20v-4h4v4"/>',
     bulb: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/>',
     clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', print: '<path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/>',
-    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>', info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>', film: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/>', in: '<path d="M12 5v14M5 12l7 7 7-7"/>', out: '<path d="M12 19V5M5 12l7-7 7 7"/>'
+    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>', info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>', route: '<circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H16a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h7.5"/>', camera: '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>', film: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/>', in: '<path d="M12 5v14M5 12l7 7 7-7"/>', out: '<path d="M12 19V5M5 12l7-7 7 7"/>'
   };
   const icon = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${P[n] || ''}</svg>`;
   const hydrate = root => root.querySelectorAll('[data-ic]').forEach(el => { if (!el.firstChild) el.innerHTML = icon(el.dataset.ic); });
@@ -1189,7 +1231,7 @@ input, select, textarea { font: inherit; }
       credit: 1240, txs: [['out', 'Maya สแกน QR สำเร็จ', 'วันนี้ 12:41', -25], ['out', 'ผู้เล่น 3 คน', 'เมื่อวาน', -75], ['in', 'เติมเครดิต', '3 พ.ย.', 1000]],
       chat: [['sys', 'Aisyah joined Chili Squad'], ['them', 'Aisyah', 'I\'m at Sampeng Lane. They said <span class="th">ลดได้</span> 😄'], ['them', 'Rahul', 'Joining after lunch. Save me some mango sticky rice'], ['me', 'Doing the guay jub quest at Ouan Pochana now!']],
       groups: [{ t: 'Yaowarat night food crawl', s: 'Sat 19:00 · English · 12/20 joined', n: 12, m: 20, j: false }, { t: 'Muay Thai morning class', s: 'Sun 08:00 · Silom · 5/8 joined', n: 5, m: 8, j: false }, { t: 'Series trail fans meetup', s: 'Fri 16:00 · Riverside pier · 18/25 joined', n: 18, m: 25, j: false }],
-      rating: {}, lastReward: null, ckStage: 'walk', obStep: 1, interests: new Set([0, 1]), role: null
+      rating: {}, lastReward: null, route: [2, 3], ckStage: 'walk', obStep: 1, interests: new Set([0, 1]), role: null
     };
   }
   let S = fresh();
@@ -1428,6 +1470,14 @@ input, select, textarea { font: inherit; }
     const next = SPOTS.find(s => quest(s[2]).state !== 'done');
     const b = $('#trail-start'); b.textContent = next ? (done ? `Continue: ${next[0]}` : `Start trail: ${next[0]}`) : 'Trail complete!'; b.disabled = !next; b.dataset.id = next ? next[2] : '';
   };
+  R.create = () => {
+    const nm = q => q.place.split(' · ')[0];
+    $('#cr-count').textContent = `· ${S.route.length} of 6`;
+    $('#cr-stops').innerHTML = S.route.length
+      ? S.route.map((id, i) => { const q = quest(id); return `<div class="stop"><span class="n">${i + 1}</span><div><b>${nm(q)}</b><small>${CAT[q.cat].en} · ${q.dist}</small></div><button class="x" data-act="cr-remove" data-id="${id}" aria-label="Remove ${nm(q)}">${icon('x')}</button></div>`; }).join('')
+      : '<p class="small" style="margin:0">No stops yet. Add at least 2 from the list below.</p>';
+    $('#cr-places').innerHTML = S.quests.filter(q => !S.route.includes(q.id)).map(q => `<div class="stop add"><span class="n">${icon('pin')}</span><div><b>${nm(q)}</b><small>${CAT[q.cat].en} · ${q.dist}</small></div><button class="x" data-act="cr-add" data-id="${q.id}" aria-label="Add ${nm(q)}">${icon('plus')}</button></div>`).join('');
+  };
   R.squad = () => {
     $('#squad-dot').hidden = true;
     if ($('#groups')) $('#groups').innerHTML = S.groups.map((g, i) => `<div class="group"><b>${g.t}</b><button class="btn sm ${g.j ? 'light' : 'pink'}" data-act="join" data-g="${i}">${g.j ? 'Joined' : 'Join'}</button><small>${g.s.replace(/\d+\/\d+/, g.n + '/' + g.m)}</small><div class="bar-meter"><i style="width:${g.n / g.m * 100}%"></i></div></div>`).join('');
@@ -1502,7 +1552,7 @@ input, select, textarea { font: inherit; }
     const pl = t.closest('[data-plan]'); if (pl) { S.plan = +pl.dataset.plan; if (!$('.scr[data-s="onboard"]').hidden) R.onboard(); else R.paywall(); return; }
     const nc = t.closest('#next-card'); if (nc) { if (S.quests.filter(x => x.path).every(x => x.state === 'done')) toast('Yaowarat complete! Old Town opens next.'); else go('quest'); return; }
     const lg = t.closest('.lang-row button'); if (lg) { if (!lg.classList.contains('on')) toast('This language is coming soon. The demo runs in English and Thai.'); return; }
-    const seg = t.closest('#f-cat button'); if (seg) { $$('#f-cat button').forEach(b => b.setAttribute('aria-pressed', b === seg)); return; }
+    const seg = t.closest('.seg button'); if (seg) { $$('button', seg.parentElement).forEach(b => b.setAttribute('aria-pressed', b === seg)); return; }
     const amt = t.closest('#amounts button'); if (amt) { $$('#amounts button').forEach(b => b.setAttribute('aria-pressed', b === amt)); $('#topup-btn').textContent = 'เติม ฿' + fmt(+amt.dataset.v); return; }
     const star = t.closest('.stars button'); if (star) { const u = +star.closest('.stars').dataset.u; S.rating[u] = +star.dataset.s; R['p-home'](); toast(`ให้ ${S.rating[u]} ดาวกับ ${RECENT[u][0]} แล้ว ผู้เล่นได้โบนัส XP`); return; }
     const q = t.closest('#quick button'); if (q) { sendChat(q.textContent); return; }
@@ -1558,6 +1608,13 @@ input, select, textarea { font: inherit; }
     'buy-pass': () => { S.pass = true; back(); toast(`Trip Pass (${PLANS[S.plan][0]}) is active. No real payment was made.`); },
     'use-coupon': b => { const c = S.coupons[+b.dataset.c]; sheet(`<div style="text-align:center"><div class="eyebrow">Show this to the staff</div><h3 class="h2" style="margin-top:6px">${c.t}</h3><p class="sub">${c.s}</p><div class="qr" id="cp-qr" style="width:180px;height:180px;margin:16px auto;box-shadow:0 0 0 1.5px var(--line)"></div><p class="small">Code PN-${(4821 + +b.dataset.c * 37)} · valid for 7 days</p><button class="btn" style="margin-top:12px" data-close>Done</button></div>`, s => buildQR(s.querySelector('#cp-qr'), 11 + +b.dataset.c)); },
     redeem: b => { const r = REWARDS[+b.dataset.r]; if (S.coins < r.c) return; S.coins -= r.c; S.coupons.unshift({ t: r.t, s: 'Redeemed with coins' }); R.passport(); toast(`Redeemed: ${r.t}. It's in My coupons.`); },
+    'cr-add': b => { if (S.route.length >= 6) { toast('A route can have up to 6 stops.'); return; } S.route.push(+b.dataset.id); R.create(); },
+    'cr-remove': b => { S.route = S.route.filter(id => id !== +b.dataset.id); R.create(); },
+    'cr-submit': () => {
+      if (!$('#cr-name').value.trim()) { toast('Give your route a name first.'); return; }
+      if (S.route.length < 2) { toast('Add at least 2 stops to make a route.'); return; }
+      sheet(`<h3 class="h2">Sent for review</h3><p class="sub">“${$('#cr-name').value.trim().replace(/</g, '&lt;')}” · ${S.route.length} stops. Our team checks every route within 2–3 days: places are public, photos are your own, and the story is respectful.</p><p class="small" style="margin:12px 0 0">This is a preview of a Phase 2 feature. Nothing was sent.</p><button class="btn" style="margin-top:14px" data-close>Done</button>`);
+    },
     'p-tab': b => go(b.dataset.tab),
     topup: () => { const v = +$('#amounts [aria-pressed="true"]').dataset.v; const bonus = v === 3000 ? 150 : 0; S.credit += v + bonus; S.txs.unshift(['in', bonus ? 'เติมเครดิต + โบนัส 5%' : 'เติมเครดิต', 'เมื่อสักครู่', v + bonus]); R['p-credit'](); toast(`เติมเครดิต ฿${fmt(v + bonus)} แล้ว (เดโม ไม่มีการชำระเงินจริง)`); }
   };

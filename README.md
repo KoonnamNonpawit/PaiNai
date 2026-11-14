@@ -17,6 +17,7 @@ PaiPlao is a travel quest app for foreign visitors (and Thai travelers) to learn
 - Quest map of Yaowarat (Bangkok Chinatown), drawn from real coordinates
 - Quest flow: practice the Thai phrase with tone feedback → walk to the spot → scan the shop QR → stamp and reward
 - Explore: categories, search, a Series Trail (Duang With You filming locations)
+- Create a route (Phase 2 preview): build a quest route from verified public places, write a scenario, send it for review, earn coins when others play it
 - Squad: private friend groups by invite link, location sharing within the squad, chat
 - Passport: streak, stamps, coupons, coin rewards
 
@@ -33,7 +34,7 @@ PaiPlao is a travel quest app for foreign visitors (and Thai travelers) to learn
 - Trip Pass: one-time 7 or 14-day pass, no auto-renew
 - Affiliate sales: eSIM, travel insurance, airport transfers
 
-Roadmap (not in the MVP): sponsored campaigns, team mode, seasonal events, creator-made routes, official licensed series trails.
+Roadmap (not in the MVP): sponsored campaigns, team mode, seasonal events, creator-made routes (preview screen in the prototype), official licensed series trails.
 
 ## Data notes
 
