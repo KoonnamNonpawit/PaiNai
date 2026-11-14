@@ -848,7 +848,9 @@ input, select, textarea { font: inherit; }
             <div class="trail-top"><span class="pill p-onc">Fan trail · unofficial</span><div class="th" style="margin-top:8px">ตามรอยซีรีส์</div><b>Duang With You</b><small>Wat Pho · boat noodles · film shop · Sky Park</small></div>
             <div class="trail-bot"><span><span class="price" id="trail-price">Free</span> <span class="small">4 spots</span></span><span class="pill p-dim">Old Town → Siam</span></div>
           </button>
-          <button class="maker" data-go="create"><span class="ic" data-ic="route"></span><span><b>Create your own route</b><small>Plan a quest walk for others · earn coins when they play it</small></span><span class="pill p-gold">Phase 2</span></button>
+          <button class="maker" data-go="create"><span class="ic" data-ic="route"></span><span><b>Create your own route</b><small>Plan a quest walk for others · earn coins when they play it</small></span><span class="pill p-ok">New</span></button>
+          <div class="sec"><h3 class="h2">Community routes</h3><span class="small">Made by travelers</span></div>
+          <div class="list" id="community"></div>
           <div class="sec"><h3 class="h2">Near you</h3><span class="small">Within 2 km</span></div>
           <div class="list" id="near"></div>
           <div class="sec"><h3 class="h2">Coming soon</h3></div>
@@ -918,9 +920,9 @@ input, select, textarea { font: inherit; }
       <form class="composer" id="composer"><input id="chat-input" placeholder="Message" autocomplete="off"><button type="submit" aria-label="Send"><span class="ic" data-ic="send"></span></button></form>
     </section>
 
-    <!-- ============ CREATE A ROUTE (Phase 2 preview) ============ -->
+    <!-- ============ CREATE A ROUTE ============ -->
     <section class="scr" data-s="create" hidden>
-      <div class="appbar"><button class="ibtn" data-act="back" aria-label="Back"><span class="ic" data-ic="back"></span></button><h1>Create a route</h1><span class="pill p-gold">Phase 2 preview</span></div>
+      <div class="appbar"><button class="ibtn" data-act="back" aria-label="Back"><span class="ic" data-ic="back"></span></button><h1>Create a route</h1></div>
       <div class="body pad gap-b" style="display:flex;flex-direction:column;gap:16px">
         <p class="sub" style="margin:0">Turn your favorite walk into a quest route. Pick verified places, write the story, and other travelers can play it.</p>
         <div class="field"><label for="cr-name">Route name</label><input class="input" id="cr-name" value="Yaowarat snack hunt" autocomplete="off"></div>
@@ -964,6 +966,8 @@ input, select, textarea { font: inherit; }
         <div class="stamps" id="stamps"></div>
         <div class="sec"><h3 class="h2">My coupons</h3><span class="small" id="cp-count"></span></div>
         <div class="list" id="coupons"></div>
+        <div class="sec"><h3 class="h2">My routes</h3><button class="link" data-go="create">Create</button></div>
+        <div class="list" id="my-routes"></div>
         <div class="sec"><h3 class="h2">Spend coins</h3><span class="small">Balance <b id="pp-coins" style="color:var(--ink)">860</b></span></div>
         <div class="list" id="rewards"></div>
         <div class="sec"><h3 class="h2">Account</h3></div>
@@ -1231,7 +1235,11 @@ input, select, textarea { font: inherit; }
       credit: 1240, txs: [['out', 'Maya สแกน QR สำเร็จ', 'วันนี้ 12:41', -25], ['out', 'ผู้เล่น 3 คน', 'เมื่อวาน', -75], ['in', 'เติมเครดิต', '3 พ.ย.', 1000]],
       chat: [['sys', 'Aisyah joined Chili Squad'], ['them', 'Aisyah', 'I\'m at Sampeng Lane. They said <span class="th">ลดได้</span> 😄'], ['them', 'Rahul', 'Joining after lunch. Save me some mango sticky rice'], ['me', 'Doing the guay jub quest at Ouan Pochana now!']],
       groups: [{ t: 'Yaowarat night food crawl', s: 'Sat 19:00 · English · 12/20 joined', n: 12, m: 20, j: false }, { t: 'Muay Thai morning class', s: 'Sun 08:00 · Silom · 5/8 joined', n: 5, m: 8, j: false }, { t: 'Series trail fans meetup', s: 'Fri 16:00 · Riverside pier · 18/25 joined', n: 18, m: 25, j: false }],
-      rating: {}, lastReward: null, route: [2, 3], ckStage: 'walk', obStep: 1, interests: new Set([0, 1]), role: null
+      rating: {}, lastReward: null, route: [2, 3], myRoutes: [],
+      routes: [
+        { name: 'Yaowarat snack hunt', by: 'Aisyah', from: 'Malaysia', cat: 'food', stops: [2, 3, 6], plays: 128, story: 'Taste three Chinatown classics, order each one in Thai, and pick your favorite.' },
+        { name: 'Temples and markets, slow morning', by: 'Ken', from: 'Japan', cat: 'culture', stops: [1, 5, 4], plays: 64, story: 'Start with the Golden Buddha, ask before you photograph Leng Noei Yi, then bargain on Sampeng Lane before the crowds.' }
+      ], ckStage: 'walk', obStep: 1, interests: new Set([0, 1]), role: null
     };
   }
   let S = fresh();
@@ -1441,6 +1449,7 @@ input, select, textarea { font: inherit; }
     return `<button class="qrow c-${q.cat}${q.state === 'locked' ? ' locked' : ''}" data-act="open-q" data-id="${q.id}"><div class="thumb">${q.short}</div><div style="min-width:0"><b>${q.title}</b><small>${q.place.split(' · ')[0]} · ${q.dist} · ${q.mins} min</small></div>${label}</button>`;
   }
   R.explore = () => {
+    $('#community').innerHTML = S.routes.map((r, i) => `<button class="qrow c-${r.cat}" data-act="open-route" data-r="${i}"><div class="thumb">${r.stops.length}<br>stops</div><div style="min-width:0"><b>${r.name}</b><small>by ${r.by} · ${r.from} · ${r.plays} plays</small></div><span class="ic">${icon('chev')}</span></button>`).join('');
     $('#near').innerHTML = S.quests.filter(q => q.state !== 'locked').slice(0, 4).map(qrow).join('');
   };
   function doSearch(v) {
@@ -1502,6 +1511,9 @@ input, select, textarea { font: inherit; }
     $('#stamps').innerHTML = done.map((q, i) => `<div class="st" style="transform:rotate(${rot[i % 6]}deg)"><svg viewBox="0 0 200 200">${stampSVG(q, 'pp' + i)}</svg></div>`).join('') + Array.from({ length: Math.max(0, 6 - done.length) }, () => '<div class="st empty">?</div>').join('');
     $('#cp-count').textContent = S.coupons.length + ' ready to use';
     $('#coupons').innerHTML = S.coupons.map((c, i) => `<div class="rw-item"><div><b>${c.t}</b><small>${c.s}</small></div><button class="btn sm light" data-act="use-coupon" data-c="${i}">Use</button></div>`).join('');
+    $('#my-routes').innerHTML = S.myRoutes.length
+      ? S.myRoutes.map(r => `<div class="rw-item"><div><b>${r.name}</b><small>${CAT[r.cat].en} · ${r.stops.length} stops · earns 20 coins per player</small></div><span class="pill p-gold">In review</span></div>`).join('')
+      : `<button class="rowlink" data-go="create"><span class="ic">${icon('route')}</span><span>You haven't made a route yet<br><small>Share your favorite walk and earn coins when others play it</small></span><span class="ic">${icon('chev')}</span></button>`;
     $('#pp-coins').textContent = fmt(S.coins);
     $('#rewards').innerHTML = REWARDS.map((r, i) => `<div class="rw-item"><div><b>${r.t}</b><small>${r.s}</small></div><button class="cost" data-act="redeem" data-r="${i}" ${S.coins < r.c ? 'disabled' : ''}>${icon('coin').replace('<svg', '<svg class="ic"')}${fmt(r.c)}</button></div>`).join('');
   };
@@ -1592,7 +1604,7 @@ input, select, textarea { font: inherit; }
     'reward-done': () => { hist = []; go('map'); },
     cat: b => { catOpen = b.dataset.cat; go('category'); },
     trail: () => go('trail'),
-    'open-q': b => { S.active = +b.dataset.id; const q = quest(); if (q.state === 'locked') { toast('This quest is locked. Finish the one before it first.'); return; } go('quest'); },
+    'open-q': b => { S.active = +b.dataset.id; const q = quest(); if (q.state === 'locked' && b.dataset.route) q.state = 'open'; if (q.state === 'locked') { toast('This quest is locked. Finish the one before it first.'); return; } go('quest'); },
     'buy-trail': () => sheet(`<h3 class="h2">Unlock “Under the Same Sky”</h3><p class="sub">All 5 filming spots, the line-reading quests and a limited photocard. Part of every purchase goes to the studio.</p><div class="rw-item" style="margin-top:14px;background:var(--paper)"><div><b>Trail pack</b><small>One-time · keep forever</small></div><b style="font-family:var(--f-display);font-size:20px">฿149</b></div><button class="btn pink" style="margin-top:14px" data-act="confirm-trail">Pay ฿149 (demo)</button><button class="btn light" style="margin-top:10px" data-close>Not now</button>`),
     'confirm-trail': () => { S.trail = true; $('.scrim')?.click(); document.querySelectorAll('.scrim').forEach(s => s.remove()); R.trail(); toast('Trail unlocked. No real payment was made.'); },
     'toggle-loc': b => { const on = b.getAttribute('aria-checked') !== 'true'; b.setAttribute('aria-checked', on); toast(on ? 'Sharing with Chili Squad until midnight.' : 'Location sharing off.'); },
@@ -1608,12 +1620,19 @@ input, select, textarea { font: inherit; }
     'buy-pass': () => { S.pass = true; back(); toast(`Trip Pass (${PLANS[S.plan][0]}) is active. No real payment was made.`); },
     'use-coupon': b => { const c = S.coupons[+b.dataset.c]; sheet(`<div style="text-align:center"><div class="eyebrow">Show this to the staff</div><h3 class="h2" style="margin-top:6px">${c.t}</h3><p class="sub">${c.s}</p><div class="qr" id="cp-qr" style="width:180px;height:180px;margin:16px auto;box-shadow:0 0 0 1.5px var(--line)"></div><p class="small">Code PN-${(4821 + +b.dataset.c * 37)} · valid for 7 days</p><button class="btn" style="margin-top:12px" data-close>Done</button></div>`, s => buildQR(s.querySelector('#cp-qr'), 11 + +b.dataset.c)); },
     redeem: b => { const r = REWARDS[+b.dataset.r]; if (S.coins < r.c) return; S.coins -= r.c; S.coupons.unshift({ t: r.t, s: 'Redeemed with coins' }); R.passport(); toast(`Redeemed: ${r.t}. It's in My coupons.`); },
+    'open-route': b => {
+      const r = S.routes[+b.dataset.r]; const nm = q => q.place.split(' · ')[0];
+      sheet(`<div class="eyebrow">${CAT[r.cat].en} · by ${r.by} (${r.from})</div><h3 class="h2" style="margin-top:4px">${r.name}</h3><p class="sub">${r.story}</p><div class="list" style="padding:0;margin-top:14px">${r.stops.map((id, i) => { const q = quest(id); return `<button class="rowlink" data-close data-act="open-q" data-route="1" data-id="${id}"><span class="ic" style="font-family:var(--f-display);font-weight:700;color:var(--ink)">${i + 1}</span><span>${nm(q)}<br><small>${q.title}</small></span><span class="ic">${icon('chev')}</span></button>`; }).join('')}</div><p class="small" style="margin:12px 0 0">${r.plays} travelers played this route · reviewed by the PaiPlao team</p><button class="btn" style="margin-top:14px" data-close data-act="open-q" data-route="1" data-id="${r.stops[0]}">Start route</button>`);
+    },
     'cr-add': b => { if (S.route.length >= 6) { toast('A route can have up to 6 stops.'); return; } S.route.push(+b.dataset.id); R.create(); },
     'cr-remove': b => { S.route = S.route.filter(id => id !== +b.dataset.id); R.create(); },
     'cr-submit': () => {
       if (!$('#cr-name').value.trim()) { toast('Give your route a name first.'); return; }
       if (S.route.length < 2) { toast('Add at least 2 stops to make a route.'); return; }
-      sheet(`<h3 class="h2">Sent for review</h3><p class="sub">“${$('#cr-name').value.trim().replace(/</g, '&lt;')}” · ${S.route.length} stops. Our team checks every route within 2–3 days: places are public, photos are your own, and the story is respectful.</p><p class="small" style="margin:12px 0 0">This is a preview of a Phase 2 feature. Nothing was sent.</p><button class="btn" style="margin-top:14px" data-close>Done</button>`);
+      const name = $('#cr-name').value.trim().replace(/</g, '&lt;');
+      const cat = ['food', 'series', 'culture'][$$('#cr-cat button').findIndex(b => b.getAttribute('aria-pressed') === 'true')] || 'food';
+      S.myRoutes.unshift({ name, cat, stops: [...S.route], status: 'review' });
+      sheet(`<h3 class="h2">Sent for review</h3><p class="sub">“${name}” · ${S.route.length} stops. Our team checks every route within 2–3 days: places are public, photos are your own, and the story is respectful. Track it under My routes in your Passport.</p><p class="small" style="margin:12px 0 0">Prototype: nothing was actually sent.</p><button class="btn" style="margin-top:14px" data-close data-go="passport">See My routes</button>`);
     },
     'p-tab': b => go(b.dataset.tab),
     topup: () => { const v = +$('#amounts [aria-pressed="true"]').dataset.v; const bonus = v === 3000 ? 150 : 0; S.credit += v + bonus; S.txs.unshift(['in', bonus ? 'เติมเครดิต + โบนัส 5%' : 'เติมเครดิต', 'เมื่อสักครู่', v + bonus]); R['p-credit'](); toast(`เติมเครดิต ฿${fmt(v + bonus)} แล้ว (เดโม ไม่มีการชำระเงินจริง)`); }
