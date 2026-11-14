@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="PaiNai: learn Thailand by doing, one quest at a time.">
+<meta name="description" content="PaiPlao (ไปป่าว): wanna go? Learn Thailand one quest at a time.">
 <meta name="theme-color" content="#16181e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="PaiNai">
+<meta name="apple-mobile-web-app-title" content="PaiPlao">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23c42d6c'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif'%3E%E0%B9%84%E0%B8%9B%3C/text%3E%3C/svg%3E">
 <style>html{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:#d9ded2}img{max-width:100%}</style>
-<title>PaiNai</title>
+<title>PaiPlao</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Sriracha&display=swap">
@@ -581,10 +581,10 @@ input, select, textarea { font: inherit; }
     <!-- ============ LANDING ============ -->
     <section class="scr" data-s="landing" id="s-landing">
       <div class="body">
-        <div class="land-top"><div class="logo"><b>ไป</b><span>PaiNai</span></div></div>
+        <div class="land-top"><div class="logo"><b>ไป</b><span>PaiPlao</span></div></div>
         <div class="land-hero">
-          <div class="big-th">ไปไหนดี?</div>
-          <h2>Learn Thailand by doing, one quest at a time.</h2>
+          <div class="big-th">ไปป่าว?</div>
+          <h2>Wanna go? Learn Thailand one quest at a time.</h2>
           <p>Order food in Thai, follow your favorite series, earn stamps and rewards from local shops.</p>
           <div class="ticker">
             <span><i>ไม่เผ็ด</i>not spicy</span><span><i>หวานน้อย</i>less sweet</span><span><i>ลดได้ไหม</i>discount?</span>
@@ -611,7 +611,7 @@ input, select, textarea { font: inherit; }
             <div class="field"><label for="ob-name">Your name</label><input class="input" id="ob-name" value="Maya" autocomplete="off"></div>
             <div class="field"><label for="ob-country">Where are you from?</label>
               <select class="select" id="ob-country"><option>Malaysia</option><option>India</option><option>Philippines</option><option>Indonesia</option><option>China</option><option>Japan</option><option>Other</option></select>
-              <span class="hint">Used for halal / vegetarian tips and the country leaderboard</span></div>
+              <span class="hint">Used for halal / vegetarian tips and the right language</span></div>
             <div class="field"><label>Food preferences</label>
               <div class="chips" id="ob-food"><button class="chip-t" aria-pressed="false">Halal</button><button class="chip-t" aria-pressed="false">Vegetarian</button><button class="chip-t" aria-pressed="false">No pork</button><button class="chip-t" aria-pressed="true">Mild spice</button></div></div>
             <div class="field"><label>Trip</label>
@@ -774,7 +774,7 @@ input, select, textarea { font: inherit; }
           <div class="pad" style="margin-top:16px">
             <div class="eyebrow">Destination</div>
             <div class="h2" style="margin-top:2px" id="ck-place"></div>
-            <p class="sub">When you arrive, use the phrase you practiced. Then ask for the PaiNai QR at the counter.</p>
+            <p class="sub">When you arrive, use the phrase you practiced. Then ask for the PaiPlao QR at the counter.</p>
             <div class="know" style="margin-top:14px;--c:var(--gold)"><div class="eyebrow">Your phrase</div><p id="ck-phrase" style="font-family:var(--f-thai);font-size:22px;color:var(--ink);margin-top:2px"></p></div>
           </div>
         </div>
@@ -783,11 +783,11 @@ input, select, textarea { font: inherit; }
             <div class="qr" id="scan-qr" aria-hidden="true"></div>
             <div class="corners"><i></i></div>
             <div class="scanline" id="scanline"></div>
-            <div class="hint" id="scan-hint">Point your camera at the shop's PaiNai QR</div>
+            <div class="hint" id="scan-hint">Point your camera at the shop's PaiPlao QR</div>
           </div>
           <div class="pad" style="margin-top:16px">
             <div class="eyebrow">Why scan?</div>
-            <p class="sub">It proves you really visited. The shop pays PaiNai only for verified visits, and you get your reward right away.</p>
+            <p class="sub">It proves you really visited. The shop pays PaiPlao only for verified visits, and you get your reward right away.</p>
           </div>
         </div>
       </div>
@@ -837,7 +837,6 @@ input, select, textarea { font: inherit; }
             <div class="trail-top"><span class="pill p-onc">Fan trail · unofficial</span><div class="th" style="margin-top:8px">ตามรอยซีรีส์</div><b>Duang With You</b><small>Wat Pho · boat noodles · film shop · Sky Park</small></div>
             <div class="trail-bot"><span><span class="price" id="trail-price">Free</span> <span class="small">4 spots</span></span><span class="pill p-dim">Old Town → Siam</span></div>
           </button>
-          <div class="event"><div class="th">ลอย</div><div><b>Loy Krathong week</b><small>Limited-time festival quests · double coins</small></div></div>
           <div class="sec"><h3 class="h2">Near you</h3><span class="small">Within 2 km</span></div>
           <div class="list" id="near"></div>
           <div class="sec"><h3 class="h2">Coming soon</h3></div>
@@ -888,16 +887,14 @@ input, select, textarea { font: inherit; }
             <g transform="translate(300 120)" opacity=".45"><circle r="16" fill="#127a4f"/><text y="5" text-anchor="middle" fill="#fff" font-family="Chakra Petch,sans-serif" font-weight="700" font-size="14">R</text></g>
           </svg>
         </div>
-        <div class="share"><span>Share my location with squad<br><span class="small">Only during team quests · ends at midnight</span></span><button class="switch" role="switch" aria-checked="true" data-act="toggle-loc" aria-label="Share location"></button></div>
+        <div class="share"><span>Share my location with squad<br><span class="small">Squad members only · ends at midnight</span></span><button class="switch" role="switch" aria-checked="true" data-act="toggle-loc" aria-label="Share location"></button></div>
         <div class="sec"><h3 class="h2">Chili Squad</h3><button class="link" data-act="chat">Open chat</button></div>
         <div class="list">
           <div class="member"><div class="av" style="background:var(--chili)">M</div><div><b>Maya (you)</b><small>On "Guay jub, no offal" · Yaowarat</small></div><span class="pill p-gold">Lv 7</span></div>
           <div class="member"><div class="av" style="background:var(--blue)">A</div><div><b>Aisyah</b><small>120 m away · Sampeng Lane</small></div><span class="pill p-gold">Lv 5</span></div>
           <div class="member"><div class="av" style="background:var(--green)">R</div><div><b>Rahul</b><small>Location off · last seen 1 h ago</small></div><span class="pill p-gold">Lv 9</span></div>
         </div>
-        <div class="list" style="margin-top:10px"><button class="rowlink" data-act="team-quest"><span class="ic" data-ic="flag"></span><span>Team quest: <b>Yaowarat food crawl</b><br><small>3 players · 2x coins when all finish</small></span><span class="ic" data-ic="chev"></span></button></div>
-        <div class="sec"><h3 class="h2">Public groups</h3><button class="link" data-act="new-group">Create</button></div>
-        <div class="list" id="groups"></div>
+        <div class="list" style="margin-top:10px"><button class="rowlink" data-act="add-friend"><span class="ic" data-ic="user-plus"></span><span>Invite a friend<br><small>Squads are private. Only people with your link can join.</small></span><span class="ic" data-ic="chev"></span></button></div>
       </div>
     </section>
 
@@ -999,7 +996,7 @@ input, select, textarea { font: inherit; }
         <div class="field"><label for="f-name">ชื่อเควส</label><input class="input" id="f-name" value="ชิมน้ำจิ้มสูตรร้าน"></div>
         <div class="field"><label>หมวด</label><div class="seg" id="f-cat"><button type="button" aria-pressed="true">หาของอร่อย</button><button type="button" aria-pressed="false">ตามรอยซีรีส์</button><button type="button" aria-pressed="false">มวยไทยและวัฒนธรรม</button></div></div>
         <div class="field"><label for="f-do">ผู้เล่นต้องทำอะไร</label><textarea class="textarea" id="f-do">ขอชิมน้ำจิ้มซีฟู้ดสูตรร้าน แล้วบอกพนักงานว่าชอบเผ็ดระดับไหน</textarea></div>
-        <div class="field"><label for="f-th">ประโยคภาษาไทยที่ให้ผู้เล่นพูด</label><input class="input thai" id="f-th" value="ขอชิมน้ำจิ้มหน่อยได้ไหม"><span class="hint">ทีม PaiNai ใส่คำอ่าน เสียงวรรณยุกต์ และคำแปลให้</span></div>
+        <div class="field"><label for="f-th">ประโยคภาษาไทยที่ให้ผู้เล่นพูด</label><input class="input thai" id="f-th" value="ขอชิมน้ำจิ้มหน่อยได้ไหม"><span class="hint">ทีม PaiPlao ใส่คำอ่าน เสียงวรรณยุกต์ และคำแปลให้</span></div>
         <div class="field"><label for="f-story">เรื่องเล่าของร้าน (ไม่บังคับ)</label><textarea class="textarea" id="f-story">สูตรน้ำจิ้มตกทอดจากรุ่นแม่ ขายในเยาวราชมากว่า 30 ปี</textarea></div>
         <div class="field"><label for="f-perk">รางวัลจากร้าน</label><input class="input" id="f-perk" value="ฟรีน้ำจิ้มเพิ่ม 1 ถ้วย"></div>
         <div class="field"><label for="f-cap">จำนวนผู้เล่นสูงสุดต่อเดือน</label><input class="input" id="f-cap" type="number" value="150" min="10"><span class="hint">ค่าใช้จ่ายสูงสุด <b id="f-max" style="color:var(--ink)">฿3,750</b> ต่อเดือน (฿25 × จำนวนคน)</span></div>
@@ -1014,7 +1011,7 @@ input, select, textarea { font: inherit; }
     <section class="scr" data-s="p-sent" hidden>
       <div class="appbar"><button class="ibtn" data-go="p-quests" aria-label="ปิด"><span class="ic" data-ic="x"></span></button><h1>สถานะคำขอ</h1></div>
       <div class="body gap-b">
-        <div class="sent-hero"><div class="th">ส่งแล้ว!</div><h2 id="sent-name"></h2><p>ทีม PaiNai จะตรวจและตอบกลับภายใน 1–2 วันทำการ</p></div>
+        <div class="sent-hero"><div class="th">ส่งแล้ว!</div><h2 id="sent-name"></h2><p>ทีม PaiPlao จะตรวจและตอบกลับภายใน 1–2 วันทำการ</p></div>
         <ol class="timeline">
           <li class="done"><span class="dot"><span class="ic" data-ic="check"></span></span><div><b>ส่งคำขอ</b><small>วันนี้</small></div></li>
           <li class="now"><span class="dot">2</span><div><b>ทีมตรวจเนื้อหาเควส</b><small>เช็กความถูกต้องทางวัฒนธรรม ใส่คำอ่านและคำแปล</small></div></li>
@@ -1045,7 +1042,7 @@ input, select, textarea { font: inherit; }
     <section class="scr" data-s="p-qr" hidden>
       <div class="appbar"><h1>QR ประจำร้าน</h1></div>
       <div class="body gap-b">
-        <div class="qr-card"><div class="th">สแกนเพื่อรับรางวัล</div><div class="qr" id="shop-qr" aria-label="QR ประจำร้าน (ตัวอย่าง)"></div><b>Jay Noi Pad Thai</b><small>Scan to finish your PaiNai quest</small></div>
+        <div class="qr-card"><div class="th">สแกนเพื่อรับรางวัล</div><div class="qr" id="shop-qr" aria-label="QR ประจำร้าน (ตัวอย่าง)"></div><b>Jay Noi Pad Thai</b><small>Scan to finish your PaiPlao quest</small></div>
         <div class="tips list">
           <div class="rowlink" style="cursor:default"><span class="ic" data-ic="check"></span><span>ตั้งไว้ที่เคาน์เตอร์ ให้ลูกค้าสแกนหลังสั่งอาหาร</span></div>
           <div class="rowlink" style="cursor:default"><span class="ic" data-ic="shield"></span><span>QR เปลี่ยนรหัสทุกวัน ป้องกันการสแกนจากรูปถ่าย</span></div>
@@ -1122,7 +1119,7 @@ input, select, textarea { font: inherit; }
   };
   const TONE = { mid: 'M2 6 H32', low: 'M2 9 H32', high: 'M2 3.5 Q17 2 32 3', falling: 'M2 3 Q14 1 32 10', rising: 'M2 9 Q20 11 32 2' };
   /* Real places. Coordinates approximate. Facts: Michelin Guide Thailand article (Sep 2019), BL Scene filming-location guides, Wikipedia/Wikivoyage.
-     perkType 'app' = reward paid by PaiNai; 'example' = what a partner deal could look like (these shops have not joined). */
+     perkType 'app' = reward paid by PaiPlao; 'example' = what a partner deal could look like (these shops have not joined). */
   const Q0 = [
     { id: 1, path: 1, x: 278, y: 410, lp: 'l', label: 'Golden Buddha', cat: 'culture', title: 'See the Golden Buddha', place: 'Wat Traimit Withayaram · Mittaphap Thai-China Rd', short: 'สาธุ', dist: '250 m', fact: 'Temple · cover shoulders and knees',
       thai: 'สาธุ', roman: 'saa-thú', mean: 'Said after paying respect, like "amen"', mins: 20, coins: 80, xp: 50,
@@ -1190,7 +1187,7 @@ input, select, textarea { font: inherit; }
       name: 'Maya', country: 'Malaysia', returning: true,
       coupons: [{ t: 'Extra custard dip', s: 'Pa Tong Go Savoey · example deal' }],
       credit: 1240, txs: [['out', 'Maya สแกน QR สำเร็จ', 'วันนี้ 12:41', -25], ['out', 'ผู้เล่น 3 คน', 'เมื่อวาน', -75], ['in', 'เติมเครดิต', '3 พ.ย.', 1000]],
-      chat: [['sys', 'Aisyah started a team quest: Yaowarat food crawl'], ['them', 'Aisyah', 'I\'m at Sampeng Lane. They said <span class="th">ลดได้</span> 😄'], ['them', 'Rahul', 'Joining after lunch. Save me some mango sticky rice'], ['me', 'Doing the guay jub quest at Ouan Pochana now!']],
+      chat: [['sys', 'Aisyah joined Chili Squad'], ['them', 'Aisyah', 'I\'m at Sampeng Lane. They said <span class="th">ลดได้</span> 😄'], ['them', 'Rahul', 'Joining after lunch. Save me some mango sticky rice'], ['me', 'Doing the guay jub quest at Ouan Pochana now!']],
       groups: [{ t: 'Yaowarat night food crawl', s: 'Sat 19:00 · English · 12/20 joined', n: 12, m: 20, j: false }, { t: 'Muay Thai morning class', s: 'Sun 08:00 · Silom · 5/8 joined', n: 5, m: 8, j: false }, { t: 'Series trail fans meetup', s: 'Fri 16:00 · Riverside pier · 18/25 joined', n: 18, m: 25, j: false }],
       rating: {}, lastReward: null, ckStage: 'walk', obStep: 1, interests: new Set([0, 1]), role: null
     };
@@ -1279,7 +1276,7 @@ input, select, textarea { font: inherit; }
     $('#q-cat').textContent = CAT[c.cat].en;
     $('#q-say').innerHTML = nowrap(c.thai); $('#q-roman').textContent = c.roman; $('#q-mean').textContent = c.mean;
     $('#q-ghost').textContent = c.short; $('#q-title').textContent = c.title; $('#q-rate').textContent = c.fact;
-    $('#q-perk-note').textContent = c.perkType === 'app' ? 'Reward from PaiNai · unlocks when you finish' : 'Example partner deal · this shop has not joined PaiNai';
+    $('#q-perk-note').textContent = c.perkType === 'app' ? 'Reward from PaiPlao · unlocks when you finish' : 'Example partner deal · this shop has not joined PaiPlao';
     $('#q-place').textContent = c.place; $('#q-dist').textContent = `${c.dist} away · open now`;
     $('#q-coins').textContent = '+' + c.coins; $('#q-xp').textContent = '+' + c.xp; $('#q-time').textContent = c.mins;
     $('#q-note').textContent = c.note; $('#q-perk').textContent = c.perk;
@@ -1338,7 +1335,7 @@ input, select, textarea { font: inherit; }
     $('#ck-title').textContent = 'Go to the spot'; $('#ck-step').textContent = 'Step 2 of 3'; $('#ck-3').classList.remove('on');
     $('#ck-place').textContent = c.place; $('#ck-dist').textContent = c.dist + ' away'; $('#ck-phrase').textContent = c.thai;
     $('#ck-pin').setAttribute('fill', COLORS[c.cat]);
-    $('#scanner').classList.remove('ok'); $('#scanline').hidden = false; $('#scan-hint').textContent = "Point your camera at the shop's PaiNai QR";
+    $('#scanner').classList.remove('ok'); $('#scanline').hidden = false; $('#scan-hint').textContent = "Point your camera at the shop's PaiPlao QR";
     const b = $('#ck-btn'); b.textContent = "I'm here"; b.disabled = false;
   };
   function ckNext() {
@@ -1374,7 +1371,7 @@ input, select, textarea { font: inherit; }
     return `<defs><path id="${id}" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
       <circle cx="100" cy="100" r="92" fill="#fff" stroke="${c}" stroke-width="5"/>
       <circle cx="100" cy="100" r="60" fill="none" stroke="${c}" stroke-width="2.5" stroke-dasharray="3 4"/>
-      <text font-size="12.5" fill="${c}" letter-spacing="3" font-family="Chakra Petch,sans-serif" font-weight="700"><textPath href="#${id}">PAINAI · ${(q.path ? 'YAOWARAT' : 'BANGKOK')} · ${(q.label || q.place.split(' · ')[0]).toUpperCase().slice(0, 20)} ·</textPath></text>
+      <text font-size="12.5" fill="${c}" letter-spacing="3" font-family="Chakra Petch,sans-serif" font-weight="700"><textPath href="#${id}">PAIPLAO · ${(q.path ? 'YAOWARAT' : 'BANGKOK')} · ${(q.label || q.place.split(' · ')[0]).toUpperCase().slice(0, 20)} ·</textPath></text>
       <text x="100" y="108" text-anchor="middle" fill="${c}" font-family="Sriracha,cursive" font-size="${q.short.length > 6 ? 22 : q.short.length > 4 ? 27 : 32}">${q.short}</text>
       <text x="100" y="134" text-anchor="middle" font-size="11" fill="${c}" letter-spacing="2" font-family="Chakra Petch,sans-serif" font-weight="700">13 NOV 2026</text>`;
   }
@@ -1433,7 +1430,7 @@ input, select, textarea { font: inherit; }
   };
   R.squad = () => {
     $('#squad-dot').hidden = true;
-    $('#groups').innerHTML = S.groups.map((g, i) => `<div class="group"><b>${g.t}</b><button class="btn sm ${g.j ? 'light' : 'pink'}" data-act="join" data-g="${i}">${g.j ? 'Joined' : 'Join'}</button><small>${g.s.replace(/\d+\/\d+/, g.n + '/' + g.m)}</small><div class="bar-meter"><i style="width:${g.n / g.m * 100}%"></i></div></div>`).join('');
+    if ($('#groups')) $('#groups').innerHTML = S.groups.map((g, i) => `<div class="group"><b>${g.t}</b><button class="btn sm ${g.j ? 'light' : 'pink'}" data-act="join" data-g="${i}">${g.j ? 'Joined' : 'Join'}</button><small>${g.s.replace(/\d+\/\d+/, g.n + '/' + g.m)}</small><div class="bar-meter"><i style="width:${g.n / g.m * 100}%"></i></div></div>`).join('');
   };
   R.chat = () => {
     $('#chat').innerHTML = S.chat.map(m => m[0] === 'sys' ? `<div class="msg sys">${m[1]}</div>` : m[0] === 'me' ? `<div class="msg me">${m[1]}</div>` : `<div class="msg them"><small>${m[1]}</small>${m[2]}</div>`).join('');
@@ -1541,7 +1538,7 @@ input, select, textarea { font: inherit; }
     mic: () => micRun(),
     'to-checkin': () => go('checkin'),
     ck: () => ckNext(),
-    share: b => { if (b.disabled) return; S.coins += 50; b.disabled = true; b.innerHTML = `<span class="ic">${icon('check')}</span>Clip ready · +50 coins added`; toast('15-second clip made with your stamp and voice. Post it with #PaiNai.'); },
+    share: b => { if (b.disabled) return; S.coins += 50; b.disabled = true; b.innerHTML = `<span class="ic">${icon('check')}</span>Clip ready · +50 coins added`; toast('15-second clip made with your stamp and voice. Post it with #PaiPlao.'); },
     'reward-done': () => { hist = []; go('map'); },
     cat: b => { catOpen = b.dataset.cat; go('category'); },
     trail: () => go('trail'),
@@ -1549,8 +1546,8 @@ input, select, textarea { font: inherit; }
     'buy-trail': () => sheet(`<h3 class="h2">Unlock “Under the Same Sky”</h3><p class="sub">All 5 filming spots, the line-reading quests and a limited photocard. Part of every purchase goes to the studio.</p><div class="rw-item" style="margin-top:14px;background:var(--paper)"><div><b>Trail pack</b><small>One-time · keep forever</small></div><b style="font-family:var(--f-display);font-size:20px">฿149</b></div><button class="btn pink" style="margin-top:14px" data-act="confirm-trail">Pay ฿149 (demo)</button><button class="btn light" style="margin-top:10px" data-close>Not now</button>`),
     'confirm-trail': () => { S.trail = true; $('.scrim')?.click(); document.querySelectorAll('.scrim').forEach(s => s.remove()); R.trail(); toast('Trail unlocked. No real payment was made.'); },
     'toggle-loc': b => { const on = b.getAttribute('aria-checked') !== 'true'; b.setAttribute('aria-checked', on); toast(on ? 'Sharing with Chili Squad until midnight.' : 'Location sharing off.'); },
-    'add-friend': () => sheet(`<h3 class="h2">Invite to Chili Squad</h3><p class="sub">Friends join with this link. Only squad members can see each other's location.</p><div class="rw-item" style="margin-top:14px;background:var(--paper)"><div><b>painai.app/s/chili-7KQ</b><small>Expires in 24 hours</small></div><button class="btn sm" data-act="copy-link">Copy</button></div><button class="btn light" style="margin-top:14px" data-close>Done</button>`),
-    'copy-link': () => { try { navigator.clipboard.writeText('painai.app/s/chili-7KQ').then(() => toast('Link copied.'), () => toast('Copy the link above to share it.')); } catch (e) { toast('Copy the link above to share it.'); } },
+    'add-friend': () => sheet(`<h3 class="h2">Invite to Chili Squad</h3><p class="sub">Friends join with this link. Only squad members can see each other's location.</p><div class="rw-item" style="margin-top:14px;background:var(--paper)"><div><b>paiplao.app/s/chili-7KQ</b><small>Expires in 24 hours</small></div><button class="btn sm" data-act="copy-link">Copy</button></div><button class="btn light" style="margin-top:14px" data-close>Done</button>`),
+    'copy-link': () => { try { navigator.clipboard.writeText('paiplao.app/s/chili-7KQ').then(() => toast('Link copied.'), () => toast('Copy the link above to share it.')); } catch (e) { toast('Copy the link above to share it.'); } },
     'team-quest': () => toast('Team quest: 2 of 3 players have started.'),
     chat: () => go('chat'),
     join: b => { const g = S.groups[+b.dataset.g]; g.j = !g.j; g.n += g.j ? 1 : -1; R.squad(); toast(g.j ? `Joined "${g.t}". Chat opens 1 hour before.` : 'Left the group.'); },

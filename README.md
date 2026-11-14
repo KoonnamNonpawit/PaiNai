@@ -1,8 +1,10 @@
-# PaiNai (ไปไหน)
+# PaiPlao (ไปป่าว)
 
-**Learn Thailand by doing, one quest at a time.**
+**Wanna go? Learn Thailand one quest at a time.**
 
-PaiNai is a travel quest app for foreign visitors (and Thai travelers) to learn Thai language, culture and history through real-world missions, such as ordering food in Thai, bargaining at a market, or following the filming locations of Thai series.
+The name comes from the Thai phrase "ไปป่าว" (pai plao), casual Thai for "wanna go?" or "going with me?".
+
+PaiPlao is a travel quest app for foreign visitors (and Thai travelers) to learn Thai language, culture and history through real-world missions, such as ordering food in Thai, bargaining at a market, or following the filming locations of Thai series.
 
 🔗 **Live prototype:** https://painaideethailand.netlify.app
 
@@ -15,7 +17,7 @@ PaiNai is a travel quest app for foreign visitors (and Thai travelers) to learn 
 - Quest map of Yaowarat (Bangkok Chinatown), drawn from real coordinates
 - Quest flow: practice the Thai phrase with tone feedback → walk to the spot → scan the shop QR → stamp and reward
 - Explore: categories, search, a Series Trail (Duang With You filming locations)
-- Squad: friends, location sharing during team quests, chat, public groups
+- Squad: private friend groups by invite link, location sharing within the squad, chat
 - Passport: streak, stamps, coupons, coin rewards
 
 **Partner app (Thai)**
@@ -29,13 +31,14 @@ PaiNai is a travel quest app for foreign visitors (and Thai travelers) to learn 
 - Partner shops pay per verified visit (QR + GPS), not a flat ad fee
 - Booking commissions (classes, tours, experiences)
 - Trip Pass: one-time 7 or 14-day pass, no auto-renew
-- Sponsored seasonal quest campaigns
-- Studio partnerships for official series trails
+- Affiliate sales: eSIM, travel insurance, airport transfers
+
+Roadmap (not in the MVP): sponsored campaigns, team mode, seasonal events, creator-made routes, official licensed series trails.
 
 ## Data notes
 
 - Places, history and filming locations are real. Sources: MICHELIN Guide Thailand (2019 article on Yaowarat street food), BL Scene filming-location guides, Wikipedia/Wikivoyage.
-- Partner deals shown at real shops are examples. These shops have not joined PaiNai.
+- Partner deals shown at real shops are examples. These shops have not joined PaiPlao.
 - The partner shop "ร้านเจ๊น้อยผัดไทย" and all user names and numbers are fictional.
 - The Series Trail is an unofficial fan trail and lists only public places.
 
